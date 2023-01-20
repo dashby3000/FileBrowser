@@ -52,9 +52,16 @@ class FileParser {
             if let excludesFilepaths = excludesFilepaths , excludesFilepaths.contains(file.filePath) {
                 continue
             }
+            if let fileNameExtension = file.fileExtension, fileNameExtension.lowercased() == "m4a" {
+                if file.displayName.isEmpty == false {
+                    files.append(file)
+                }
+            }
+            /*
             if file.displayName.isEmpty == false {
                 files.append(file)
             }
+             */
         }
         // Sort
         files = files.sorted(){$0.displayName < $1.displayName}

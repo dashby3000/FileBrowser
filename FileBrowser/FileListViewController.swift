@@ -28,7 +28,8 @@ class FileListViewController: UIViewController {
     let searchController: UISearchController = {
         let searchController = UISearchController(searchResultsController: nil)
         searchController.searchBar.searchBarStyle = .minimal
-        searchController.searchBar.backgroundColor = UIColor.white
+        searchController.searchBar.backgroundColor = .secondarySystemBackground
+        //searchController.searchBar.backgroundColor = UIColor.white
         searchController.dimsBackgroundDuringPresentation = false
         return searchController
     }()
@@ -41,7 +42,7 @@ class FileListViewController: UIViewController {
     
     convenience init (initialPath: URL, showCancelButton: Bool) {
         self.init(nibName: "FileBrowser", bundle: Bundle(for: FileListViewController.self))
-        self.edgesForExtendedLayout = UIRectEdge()
+        //self.edgesForExtendedLayout = UIRectEdge()
         
         // Set initial path
         self.initialPath = initialPath

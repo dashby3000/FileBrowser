@@ -55,7 +55,8 @@ open class FileBrowser: UINavigationController {
         let fileListViewController = FileListViewController(initialPath: validInitialPath, showCancelButton: showCancelButton)
         fileListViewController.allowEditing = allowEditing
         self.init(rootViewController: fileListViewController)
-        self.view.backgroundColor = UIColor.white
+        self.isModalInPresentation = true
+        //self.view.backgroundColor = UIColor.white
         self.fileList = fileListViewController
     }
 }
