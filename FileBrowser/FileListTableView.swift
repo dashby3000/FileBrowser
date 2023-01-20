@@ -60,6 +60,7 @@ extension FileListViewController: UITableViewDataSource, UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
+    /*
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if searchController.isActive {
             return nil
@@ -69,6 +70,41 @@ extension FileListViewController: UITableViewDataSource, UITableViewDelegate {
         }
         else {
             return nil
+        }
+    }
+    */
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if searchController.isActive {
+            return nil
+        }
+        
+        if sections[section].count > 0 {
+            let headerView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: tableView.frame.width, height: 38))
+            
+            let label = UILabel()
+            label.frame = CGRect.init(x: 12, y: 0, width: headerView.frame.width-10, height: headerView.frame.height-10)
+            label.font = .boldSystemFont(ofSize: 20)
+            label.textColor = .label
+            label.text = collation.sectionTitles[section]
+           
+            headerView.addSubview(label)
+            
+            return headerView
+        } else {
+            return nil
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if searchController.isActive {
+            return 0
+        }
+        
+        if sections[section].count > 0 {
+            return 28
+        } else {
+            return 0
         }
     }
     
@@ -85,7 +121,7 @@ extension FileListViewController: UITableViewDataSource, UITableViewDelegate {
         }
         return collation.section(forSectionIndexTitle: index)
     }
-    
+   
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if (editingStyle == UITableViewCellEditingStyle.delete) {
             let selectedFile = fileForIndexPath(indexPath)
