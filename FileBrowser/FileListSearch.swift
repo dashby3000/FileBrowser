@@ -12,7 +12,7 @@ extension FileListViewController: UISearchBarDelegate, UISearchControllerDelegat
         
     // MARK: UISearchControllerDelegate
     func willPresentSearchController(_ searchController: UISearchController) {
-        self.tableView.contentInset = UIEdgeInsetsMake(20, 0, 0, 0)
+        self.tableView.contentInset = UIEdgeInsetsMake(25, 0, 0, 0)
     }
     
     func willDismissSearchController(_ searchController: UISearchController) {
